@@ -1,7 +1,7 @@
 "use strict";
 
 let secretNumber = Math.trunc(Math.random() * 20) + 1;
-let gameScore = 20;
+let gameScore = 10;
 let gameHighscore = 0;
 let finished = false;
 
@@ -95,9 +95,9 @@ againButton.addEventListener("click", () => {
   changeBackgroundColor("#222");
   enableTheGame();
   secretNumber = Math.trunc(Math.random() * 20) + 1;
-  gameScore = 20;
+  gameScore = 10;
   finished = false;
   message.textContent = "Start guessing...";
-  score.textContent = "20";
+  score.textContent = gameScore;
   inputValue.value = "";
 });
