@@ -21,14 +21,14 @@ checkButton.addEventListener("click", () => {
     if (!guess) {
       message.textContent = "No number!";
     } else if (guess < 1 || guess > 20) {
-      message.textContent = "Only numbers from 1 to 20!";
+      displayMessage("Only numbers from 1 to 20!");
       inputValue.value = "";
     } else if (guess === secretNumber) {
       winTheGame();
       defineHighScore();
     } else if (guess !== secretNumber) {
       if (gameScore > 1) {
-        message.textContent = guess > secretNumber ? "Too high!" : "Too low!";
+        displayMessage(guess > secretNumber ? "Too high!" : "Too low!");
         decreaseTheScore();
       } else {
         loseTheGame();
@@ -39,7 +39,7 @@ checkButton.addEventListener("click", () => {
 
 const winTheGame = () => {
   finished = true;
-  message.textContent = "Correct number!";
+  displayMessage("Correct number!");
   changeBackgroundColor("#60b347");
   showSecretNumber();
   disableTheGame();
@@ -47,7 +47,7 @@ const winTheGame = () => {
 
 const loseTheGame = () => {
   finished = true;
-  message.textContent = "You lost the game!";
+  displayMessage("You lost the game!");
   changeBackgroundColor("#b34747");
   showSecretNumber();
   disableTheGame();
@@ -97,7 +97,11 @@ againButton.addEventListener("click", () => {
   secretNumber = Math.trunc(Math.random() * 20) + 1;
   gameScore = 10;
   finished = false;
-  message.textContent = "Start guessing...";
+  displayMessage("Start guessing...");
   score.textContent = gameScore;
   inputValue.value = "";
 });
+
+const displayMessage = (text) => {
+  message.textContent = text;
+};
